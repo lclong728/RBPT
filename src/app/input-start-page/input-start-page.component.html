@@ -1,0 +1,27 @@
+<div class="content-container">
+    <div class="heading">
+        <h1 class="title"> Getting Started </h1>
+        <p class="subtitle"> This is the key page for users to input the application details  </p>
+    </div>
+    
+    <mat-divider class="divider"></mat-divider>
+    
+    <div class="section-desc">
+        <p>This input section can be divided into 4 different sections.</p>
+        <p>(1) Customer Information</p>
+        <p>(2) Facility Information</p> 
+        <p>(3) Collateral Information</p>
+        <p>(4) Liabilities Information</p> 
+        <p>Please read the instruction carefully before input the application details </p>
+    </div>
+    
+    <mat-divider class="divider"></mat-divider>
+    
+    <div class="privacy-policy">
+        <p>All information collected in this application form will be strictly followed to the 
+            <a target="_blank" href="https://angular-templates.io/privacy-policy">privacy policy.</a>
+        </p>
+
+        <mat-checkbox [(ngModel)]="confirmedPolicy" (change)="isConfirmedPolicy($event)">Check me!</mat-checkbox>
+    </div>
+</div>

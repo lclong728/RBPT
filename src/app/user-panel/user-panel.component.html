@@ -1,0 +1,44 @@
+<mat-sidenav-container class="page-container">
+
+    <mat-sidenav #sidenav mode="side" opened 
+    class="sidebar" 
+    [fixedInViewport]="true" 
+    [fixedTopGap]="0" 
+    [fixedBottomGap]="0">
+
+        <app-project-header></app-project-header>
+
+        <div class="list-items">
+            <a class="list-item" routerLink="user" routerLinkActive="selected"> 
+                <i class="material-icons">account_box</i>
+                User
+            </a>
+            
+            <a class="list-item" routerLink="guide" routerLinkActive="selected"> 
+                <i class="material-icons">help_center</i>
+                Guide
+            </a>
+
+            <a class="list-item" routerLink="input" routerLinkActive="selected"> 
+                <i class="material-icons">edit</i>
+                Input
+            </a>
+            
+            <a class="list-item" routerLink="result" routerLinkActive="selected"> 
+                <i class="material-icons">assessment</i>
+                Result
+            </a>
+        </div>
+
+        <div class="logout" routerLink='../login'>
+            <i class="material-icons" style="padding-right: 15px;">login</i>
+            Logout
+        </div>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content class="page-content-container">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+    
+</mat-sidenav-container>

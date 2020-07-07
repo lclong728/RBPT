@@ -1,0 +1,164 @@
+.divider {
+    padding: 5px;
+    border-top-color: rgba(35, 42, 58, 0.3);
+    border-top-width: 2px;
+}
+
+.content-container {
+    padding: 20px;
+}
+
+.heading .title {
+    font-family: 'Roboto Slab';
+    font-size: 40px;
+    color: rgba(35, 42, 58, 1);
+}
+
+.heading .subtitle {
+    padding: 10px 0px;
+    font-family: 'Roboto Slab';
+    font-size: 16px;
+    font-style: italic;
+    color: grey;
+}
+
+.cust-form-container {
+    padding: 10px;
+}
+
+.cust-form-container form .mat-form-field {
+    padding: 10px;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: rgba(35, 42, 58, 0.5);
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: rgba(35, 42, 58, 0.5);
+}
+
+.cust-form-container .customer-group-container {
+    display: flex;
+}
+
+.cust-form-container .customer-group-container .customer-info-statement {
+    color: rgba(35, 42, 58, 1);
+    font-family: 'Roboto Slab';
+    padding-left: 10px;
+    justify-content: center;
+}
+
+.borrower-container {
+    padding: 10px;
+}
+
+.borrowers-init-container {
+    display: flex;
+    height: 80px;
+}
+
+.borrowers-init-container .mat-form-field {
+    padding: 10px;
+}
+
+.borrowers-init-container button {
+    height: 50px;
+    padding-top: 8px;
+    padding-bottom: 10px;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: rgba(35, 42, 58, 0.95);
+    font-family: 'Roboto Slab';
+    border-color: rgba(35, 42, 58, 0.4);
+    border-width: 1px;
+}
+
+.borrowers-init-container button:hover {
+    border-width: 3px;
+}
+
+
+.borrower-control-container {
+    display: flex;
+    height: 50px;
+}
+
+.borrower-control-container .borrower-counter {
+    height: 100%;
+    color: rgba(35, 42, 58, 0.95);
+    font-family: 'Roboto Slab';
+    padding: 10px;
+    font-size: 15px;
+    font-style: bold;
+}
+
+.borrower-control-container .borrower-add-btn {
+    justify-content: center;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    color: rgba(35, 42, 58, 0.95);
+    font-size: 15px;
+    font-family: 'Roboto Slab';
+}
+
+
+/* Table Field */
+.borrower-table-container {
+    max-height: 550px;
+    width: 100%;
+    overflow: auto;
+    margin-top: 20px;
+}
+  
+table {
+    width: 100%;
+    border-spacing: 0 8px !important;
+}
+
+td.mat-cell {
+    /* row padding */
+    padding: 5px;
+    /* row border */
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+}
+  
+.mat-table-sticky {
+    padding: 10px;
+    border-right: 1px solid #e0e0e0;
+    min-height: 30px;
+    text-align: center
+}
+
+.mat-table-sticky:first-child {
+    padding: 3px;
+    border-right: 1px solid #e0e0e0;
+}
+  
+.mat-table-sticky:last-child {
+    border-left: 1px solid #e0e0e0;
+}
+
+.mat-footer-row .mat-footer-cell {
+    justify-content: center;
+    padding: 10px;
+    color: rgba(35, 42, 58, 0.7);
+    font-size: 15px;
+    font-family: 'Roboto Slab';
+    font-style: italic;
+}
+
+.no-data-desclaimer {
+    justify-content: center;
+    padding: 10px;
+    color: rgba(35, 42, 58, 0.7);
+    font-size: 15px;
+    font-family: 'Roboto Slab';
+    font-style: italic;
+}
+
+.hide {
+    display: none;
+}

@@ -1,0 +1,17 @@
+.project-title {
+    padding: 30px;
+}
+
+.organization {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 35px;
+    font-style: bold;
+    font-family: 'Fredoka One', cursive;;
+}
+
+.project-name {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 30px;
+    font-family: 'Fredoka One', cursive;
+    padding-top: 10px;
+}

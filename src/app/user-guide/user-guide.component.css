@@ -1,0 +1,53 @@
+.guide-header-container {
+    width: 100%;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.guide-header-container h1 {
+    font-family: 'Roboto Slab';
+    font-size: 36px;
+    font-weight: bold;
+    color: rgb(35, 42, 58);
+    text-decoration: underline;
+}
+
+.guide-header-container p {
+    font-family: 'Roboto Slab';
+    font-size: 16px;
+    color: rgb(35, 42, 58);
+    padding: 10px;
+}
+
+
+.guide-info-container {
+    width: 100%;
+    padding: 30px;
+}
+
+mat-accordion {
+    padding: 20px 50px;
+}
+
+mat-expansion-panel {
+    background-color: rgba(35, 42, 58, 0.1);
+    margin-right: 70px; 
+}
+
+.app-info-expan-panel {
+    padding: 10px;
+}
+
+.app-info-header {
+    font-family: 'Roboto Slab';
+    font-size: 16px;
+    color: rgba(35, 42, 58, 0.9);
+}
+
+.app-info-content-container {
+    font-family: 'Roboto Slab';
+    font-size: 14px;
+    color: rgba(35, 42, 58, 0.9);
+    padding: 10px;
+}
+

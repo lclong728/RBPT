@@ -1,0 +1,220 @@
+<div class="content-container">
+
+    <div class="heading">
+        <h1 class="title"> Cutomer Information </h1>
+        <p class="subtitle"> Please fill in the applicant information  </p>
+    </div>
+
+    <mat-divider class="divider"></mat-divider>
+
+    <div class="cust-form-container">
+
+        <form class="group-info-form">
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Group Name</mat-label>
+                <input matInput placeholder="Example Company Limited">
+            </mat-form-field>
+            
+            <mat-form-field hintLabel="5 digits number" appearance="outline">
+                <mat-label>Group ID</mat-label>
+                <input matInput type="number" maxlength="5" placeholder="00001">
+            </mat-form-field>
+
+            <mat-form-field hintLabel="HKD'000" appearance="outline">
+                <mat-label>Group Turnover in HKD</mat-label>
+                <input matInput type="number" placeholder="10000">
+                <span matSuffix>,000</span>
+            </mat-form-field>
+
+        </form>
+
+        <form class="Citic-group-form">
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Marketing Group [BU]</mat-label>
+                <mat-select>
+                    <mat-option value="Corp I">Corp I</mat-option>
+                    <mat-option value="Corp II">Corp II</mat-option>
+                    <mat-option value="Corp III">Corp III</mat-option>
+                    <mat-option value="Corp IV">Corp IV</mat-option>
+                    <mat-option value="Corp V">Corp V</mat-option>
+                    <mat-option value="FI">FI</mat-option>
+                    <mat-option value="Singapore">Singapore</mat-option>
+                    <mat-option value="Macau">Macau</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <br>
+
+            <div class="customer-group-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>CNCBI Strategic Customer Group</mat-label>
+                    <mat-select  (selectionChange) ="setCustomerGroupStatement($event.value)">
+                        <mat-option *ngFor="let gp of customerGroupList" [value]="gp.id">
+                            {{gp.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+                <div class="customer-info-statement" *ngIf="selectedCustomerGroup != null">
+                    <p>{{ selectedCustomerGroup }}:</p>
+                    <p>{{ customerGroupStatement }}</p>
+                </div>
+            </div>
+            
+        </form>
+
+    </div>
+
+    <mat-divider class="divider"></mat-divider>
+        
+    <div class="borrower-container">
+
+        <div class="borrowers-init-container" *ngIf="!isBorrowerInit">
+            <mat-form-field appearance="outline">
+                <mat-label>Number of Borrowers</mat-label>
+                <input matInput type="number" placeholder="4" [(ngModel)]='borrowerNumber'>
+            </mat-form-field>
+            
+            <button mat-stroked-button (click)="initBorrowerTable()"> 
+                OK
+            </button>
+        </div>
+        
+        <div class="borrower-control-container" *ngIf="isBorrowerInit">
+            <p class="borrower-counter">Total Borrower: {{ borrowerNumber }} </p>
+            <button mat-raised-button class="borrower-add-btn" (click)="addBorrower()">
+                <mat-icon>add</mat-icon>
+                Add Borrower
+            </button>
+        </div>
+
+        <div class="borrower-table-container">
+
+            <table #borrowerTable mat-table [dataSource]="borrowerDataSource" class="mat-elevation-z8" matSort>
+
+                <!-- Id Column -->
+                <ng-container matColumnDef="id" sticky>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Borrower ID </th>
+                  <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <!-- Borrower Name Column -->
+                <ng-container matColumnDef="borrowerName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Borrower Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.borrowerName}} </td>
+                  </ng-container>
+            
+                <!-- Customer Id Column -->
+                <ng-container matColumnDef="customerId">
+                    <th mat-header-cell *matHeaderCellDef> Customer Id </th>
+                    <td mat-cell *matCellDef="let element"> {{element.customerId}} </td>
+                </ng-container>
+            
+                <!-- Customer Type Column -->
+                <ng-container matColumnDef="customerType">
+                    <th mat-header-cell *matHeaderCellDef> Customer Type </th>
+                    <td mat-cell *matCellDef="let element"> {{element.customerType}} </td>
+                </ng-container>
+            
+                <!-- turnover Column -->
+                <ng-container matColumnDef="turnover">
+                    <th mat-header-cell *matHeaderCellDef> Turnover </th>
+                    <td mat-cell *matCellDef="let element"> {{element.turnover}} </td>
+                </ng-container>
+
+                <!-- internalRating Column -->
+                <ng-container matColumnDef="internalRating">
+                    <th mat-header-cell *matHeaderCellDef> Internal Rating </th>
+                    <td mat-cell *matCellDef="let element"> {{element.internalRating}} </td>
+                </ng-container>
+                
+                <!-- externalRatingLocal Column -->
+                <ng-container matColumnDef="externalRatingLocal">
+                    <th mat-header-cell *matHeaderCellDef> External Rating (Local) </th>
+                    <td mat-cell *matCellDef="let element"> {{element.externalRatingLocal}} </td>
+                </ng-container>
+
+                <!-- externalRatingForeign Column -->
+                <ng-container matColumnDef="externalRatingForeign">
+                    <th mat-header-cell *matHeaderCellDef> External Rating (Foreign) </th>
+                    <td mat-cell *matCellDef="let element"> {{element.externalRatingForeign}} </td>
+                </ng-container>
+
+                <!-- sovereignCurrency Column -->
+                <ng-container matColumnDef="sovereignCurrency">
+                    <th mat-header-cell *matHeaderCellDef> Sovereign Currency </th>
+                    <td mat-cell *matCellDef="let element"> {{element.sovereignCurrency}} </td>
+                </ng-container>
+
+                <!-- sovereignRatingLocal Column -->
+                <ng-container matColumnDef="sovereignRatingLocal">
+                    <th mat-header-cell *matHeaderCellDef> Sovereign Rating (Local) </th>
+                    <td mat-cell *matCellDef="let element"> {{element.sovereignRatingLocal}} </td>
+                </ng-container>
+                
+                <!-- sovereignRatingForeign Column -->
+                <ng-container matColumnDef="sovereignRatingForeign">
+                    <th mat-header-cell *matHeaderCellDef> Sovereign Rating (Foreign) </th>
+                    <td mat-cell *matCellDef="let element"> {{element.sovereignRatingForeign}} </td>
+                </ng-container>
+
+                <!-- group Column -->
+                <ng-container matColumnDef="group">
+                    <th mat-header-cell *matHeaderCellDef> Group </th>
+                    <td mat-cell *matCellDef="let element"> {{element.group}} </td>
+                </ng-container>
+
+                <!-- totalDebtOverAsset Column -->
+                <ng-container matColumnDef="totalDebtOverAsset">
+                    <th mat-header-cell *matHeaderCellDef> Total Debt / Asset </th>
+                    <td mat-cell *matCellDef="let element"> {{element.totalDebtOverAsset}} </td>
+                </ng-container>
+
+                <!-- mitigation Column -->
+                <ng-container matColumnDef="mitigation">
+                    <th mat-header-cell *matHeaderCellDef> Mitigation </th>
+                    <td mat-cell *matCellDef="let element"> {{element.mitigation}} </td>
+                </ng-container>
+
+                <!-- riskCountry Column -->
+                <ng-container matColumnDef="riskCountry">
+                    <th mat-header-cell *matHeaderCellDef> Risk Country </th>
+                    <td mat-cell *matCellDef="let element"> {{element.riskCountry}} </td>
+                </ng-container>
+
+                <!-- Star Column -->
+                <ng-container matColumnDef="action" stickyEnd>
+                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                    <td mat-cell *matCellDef="let element" style="display: flex;">
+                        <button mat-icon-button><mat-icon>edit</mat-icon></button>
+                        <button mat-icon-button><mat-icon>delete_outline</mat-icon></button>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="noDataDisclaimer">
+                    <td mat-footer-cell *matFooterCellDef colspan="12">
+                        No Borrower Data......
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="borrowerColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: borrowerColumns;"></tr>
+                <tr mat-footer-row 
+                    *matFooterRowDef="['noDataDisclaimer']" 
+                    class="no-data-desclaimer"
+                    [ngClass]="{'hide': borrowerDataSource.data.length!=0}"></tr>
+            </table>  
+
+            <mat-paginator
+              [pageSize]="5"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              showFirstLastButtons>
+            </mat-paginator>
+
+        </div>
+
+    </div>
+
+</div>
